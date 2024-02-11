@@ -8,12 +8,10 @@ export class RolesService {
   constructor(@InjectModel(Role) private roleRepository: typeof Role) {}
 
   async createRole(roleDto: CreateRoleDto) {
-    const role = await this.roleRepository.create(roleDto);
-    return role;
+    return await this.roleRepository.create(roleDto);
   }
 
   async getRoleByValue(value: string) {
-    const role = this.roleRepository.findOne({ where: { value } });
-    return role;
+    return this.roleRepository.findOne({ where: { value } });
   }
 }

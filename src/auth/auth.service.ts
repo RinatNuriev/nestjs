@@ -35,7 +35,7 @@ export class AuthService {
     const user = await this.usersService.findUser(userDto.email);
     if (user) {
       throw new HttpException(
-        'Пользователь существует стаким email',
+        'Пользователь существует с таким email',
         HttpStatus.BAD_REQUEST,
       );
     }

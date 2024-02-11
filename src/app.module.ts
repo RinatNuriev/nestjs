@@ -7,11 +7,16 @@ import { Role } from './roles/roles.model';
 import { RolesModule } from './roles/roles.module';
 import { UserRoles } from './roles/user-roles.model';
 import { AuthModule } from './auth/auth.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   controllers: [],
   providers: [],
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'client'),
+    }),
     ConfigModule.forRoot({
       envFilePath: `.${process.env.NODE_ENV}.env`,
     }),
